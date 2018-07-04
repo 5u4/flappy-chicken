@@ -7,10 +7,16 @@ const FLY_HEIGHT = 250
 # bird movement
 var movement = Vector2()
 
+# bird sprite
+onready var sprite = get_node("AnimatedSprite")
+
 func _physics_process(delta):
 	"""
 	handle all bird action frame by frame
 	"""
+	
+	# handle flying sprite animation
+	sprite_handler()
 	
 	gravity()  # apply gravity to bird
 	fly()      # apply fly to bird
@@ -36,7 +42,16 @@ func fly():
 		
 		# move it up
 		movement.y -= FLY_HEIGHT
+		
+		# add a down frame to create flying animation
+		sprite.play("down")
 
+func sprite_handler():
+	"""
+	handle flying sprite animation
+	"""
+	
+	sprite.play("up") if movement.y < 0 else sprite.play("down")
 
 func _on_VisibilityNotifier2D_screen_exited():
 	"""
