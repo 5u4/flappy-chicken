@@ -36,3 +36,11 @@ func fly():
 		
 		# move it up
 		movement.y -= FLY_HEIGHT
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	"""
+	when chicken flies out of screen, end the game
+	"""
+	
+	get_node("/root/Main").gameover_handle()

@@ -1,4 +1,9 @@
 extends Node
 
-func _process(delta):
-	pass
+func gameover_handle():
+	"""
+	handle game over event
+	"""
+	
+	# pause the game
+	get_tree().paused = true
