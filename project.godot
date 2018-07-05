@@ -12,7 +12,12 @@ config_version=3
 
 config/name="flappy-bird"
 run/main_scene="res://Scenes/Main.tscn"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
+
+[display]
+
+window/size/resizable=false
 
 [input]
 
