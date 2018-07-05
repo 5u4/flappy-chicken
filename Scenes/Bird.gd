@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 # bird stat constant
-const GRAVITY = 15
-const FLY_HEIGHT = 250
+const GRAVITY = 17
+const FLY_HEIGHT = 300
 
 # bird movement
 var movement = Vector2()

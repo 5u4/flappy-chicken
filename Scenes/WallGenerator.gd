@@ -3,13 +3,18 @@ extends Timer
 var Wall = load("res://Scenes/Wall.tscn")
 var ScorePoint = load("res://Scenes/ScorePoint.tscn")
 
+const INITIAL_WALL_SPEED = 200
+
+const MAX_WALL_SPEED = 600
+const MIN_WALL_SPAWN_SPEED = 1
+
 func _ready():
 	"""
 	seed random number
 	"""
 	
 	randomize()
-	generate_random_walls(200)  # first walls
+	generate_random_walls(INITIAL_WALL_SPEED)  # first walls
 
 func generate_random_walls(speed):
 	"""
@@ -87,4 +92,8 @@ func _on_WallGenerator_timeout():
 	every few seconds, generate walls
 	"""
 	
-	generate_random_walls(200)
+	var current_score = get_node("/root/Main").score
+	
+	set_wait_time(max(MIN_WALL_SPAWN_SPEED, 4 - current_score * 0.2))
+	
+	generate_random_walls(min(MAX_WALL_SPEED, INITIAL_WALL_SPEED + current_score * 20))
