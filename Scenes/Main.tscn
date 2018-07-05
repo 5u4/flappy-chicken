@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Bird.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/WallGenerator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/SkyBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="Bird" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -16,5 +18,7 @@ position = Vector2( 96, 96 )
 [node name="WallGenerator" parent="." index="1" instance=ExtResource( 3 )]
 
 [node name="SkyBackground" parent="." index="2" instance=ExtResource( 4 )]
+
+[node name="UI" parent="." index="3" instance=ExtResource( 5 )]
 
 
