@@ -1,6 +1,7 @@
 extends Timer
 
 var Wall = load("res://Scenes/Wall.tscn")
+var ScorePoint = load("res://Scenes/ScorePoint.tscn")
 
 func _ready():
 	"""
@@ -23,6 +24,25 @@ func generate_random_walls(speed):
 	
 	spawn_walls_in_given_direction(1056, hole_position, speed, -1)
 	spawn_walls_in_given_direction(1056, hole_position + hole_size, speed, 1)
+	spawn_score_point(1056, hole_position, speed)
+
+func spawn_score_point(x, y, speed):
+	"""
+	spawn score point at a given position
+	
+	Args:
+		x     (int): the x position of the score point
+		y     (int): the y position of score point
+		speed (int): the speed of score point moving towards player
+	"""
+	
+	var score_point = ScorePoint.instance()
+	
+	score_point.position.x = x
+	score_point.position.y = y
+	score_point.movement   = Vector2(-speed, 0)
+	
+	add_child(score_point)
 
 func spawn_walls_in_given_direction(x, y, speed, up):
 	"""
